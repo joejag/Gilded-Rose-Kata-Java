@@ -2,22 +2,24 @@ package com.gildedrose.rules.factory;
 
 import com.gildedrose.Item;
 import com.gildedrose.rules.DoNothingRule;
-import com.gildedrose.rules.quality.IncreasesWithinBoundsRule;
 import com.gildedrose.rules.Rule;
+import com.gildedrose.rules.quality.IncreasesWithinBoundsRule;
 import com.gildedrose.rules.quality.ZeroQualityRule;
 
 import java.util.List;
+import java.util.Map;
 
 import static java.util.Arrays.asList;
+import static java.util.Map.entry;
 
 public class QualityRulesFactory {
 
     public static Rule ruleFor(Item item) {
-        if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) return backstageTicketRules(item);
-        if (item.name.equals("Aged Brie")) return agedBrieRules(item);
-        if (item.name.equals("Conjured Mana Cake")) return conjuredRules(item);
-
-        return itemThatDecreasesInQuality(item);
+        return Map.ofEntries(
+                entry("Backstage passes to a TAFKAL80ETC concert", backstageTicketRules(item)),
+                entry("Aged Brie", agedBrieRules(item)),
+                entry("Conjured Mana Cake", conjuredRules(item)))
+                .getOrDefault(item.name, itemThatDecreasesInQuality(item));
     }
 
     private static Rule conjuredRules(Item item) {

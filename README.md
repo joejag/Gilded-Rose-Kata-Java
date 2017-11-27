@@ -9,5 +9,6 @@ The approach was:
 * Refactor to make no nested if statements all with one predicate
 * Break code into `Rules` that are constructed by factories
 * Add new 'conjured' requirement (TDD style)
+* Move factories to use a map, rather than ifs - we now have zero if statements in this codebase
 
 This is a fun kata. With a proper nasty starting point.
