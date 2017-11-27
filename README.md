@@ -1,6 +1,6 @@
 # Gilded Rose Kata
 
-This is a 'solution' to the [Gilded Rose Kata](GildedRoseRequirements.txt).
+This is a 'solution' to the [Gilded Rose Kata](GildedRoseRequirements.txt). It ended up with no if statements.
 
 The approach was:
 
